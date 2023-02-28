@@ -1,0 +1,56 @@
+SetPath "Users:nharzallah:Dropbox (MIT):NNature-Editable files:Repo"
+
+Open PRISM-Template.pzfx
+
+Goto D,1
+DeleteAllDataSets
+
+SetPath "Users:nharzallah:Dropbox (MIT):NNature-Editable files:Repo:Kinetics"
+Foreach *.csv
+Goto D,1
+DuplicateFamily
+ClearTable
+Import
+Next
+
+Goto G
+ForeachSheet
+SetGraphTitle, %S
+//SetAxisTitle, Y, Intensity
+Next
+
+
+Goto D,1
+DeleteAllDataSets
+
+Goto D,2
+DeleteAllDataSets
+
+SetPath "Users:nharzallah:Dropbox (MIT):NNature-Editable files:Repo:FC"
+Foreach *-FC.csv
+Goto D,2
+DuplicateFamily
+ClearTable
+Import
+Next
+
+Goto D,3
+DeleteAllDataSets
+SetPath "Users:nharzallah:Dropbox (MIT):NNature-Editable files:Repo:Rate"
+Import Rates.csv
+
+
+SetPath "Users:nharzallah:Dropbox (MIT):NNature-Editable files:Repo:PRISM"
+
+Save PRISM.pzfx
+
+CreateLayout 3,2,portrait,3,20
+Goto L
+
+ExportPDF PRISM.pdf
+
+Beep 
+
+
+
+ 
